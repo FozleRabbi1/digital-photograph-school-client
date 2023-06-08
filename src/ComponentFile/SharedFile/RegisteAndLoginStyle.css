@@ -1,0 +1,123 @@
+.containerr {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #223243; */
+    min-height: 100vh;
+    /* width: 100%; */
+}
+
+.signUp {
+    padding: 20px 40px;
+    border: 8px solid #223243;
+    background-color: #162638;
+    border-radius: 20px;
+    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+        5px 10px 15px rgba(0, 0, 0, 0.35),
+        inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+        inset 5px 10px 15px rgba(0, 0, 0, 0.35);
+}
+
+.containerr .form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.containerr .form h2 {
+    color: #FFF;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+    font-size: 1.5rem;
+}
+
+.containerr .form .inputBox {
+    position: relative;
+    width: 300px;
+}
+
+.containerr .form .inputBox input {
+    padding: 2px 8px 2px 58px;
+    border: none;
+    width: 100%;
+    background-color: #223242;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #FFF;
+    font-weight: 300;
+    border-radius: 25px;
+    font-size: 1em;
+    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.35);
+    transition: all 0.5s;
+    outline: none;
+}
+
+.containerr .form .inputBox span {
+    position: absolute;
+    left: 0;
+    padding: 5px 10px 12px 58px;
+    pointer-events: none;
+    font-size: .9rem;
+    font-weight: 300;
+    transition: all 0.5s;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.containerr .form .inputBox input:valid ~ span,
+.containerr .form .inputBox input:focus ~ span {
+    color: #00dfc4;
+    background-color: #223242;
+    transform: translateX(25px) translateY(-16px) ;
+    padding: 2px 10px;
+    border-radius: 30px;
+    font-size: 12px;
+    box-shadow: inset -1px -1px 5px rgba(255, 255, 255, 0.1)    , inset 1px 1px 5px rgba(71, 70, 70, 0.5) ;
+}
+.containerr .form .inputBox input:valid,
+.containerr .form .inputBox input:focus{
+    border: 1px solid #00dfc4;
+}
+.containerr .form .inputBox .icone {
+    position: absolute;
+    top: 5px;
+    left: 16px;
+    width: 25px;
+    padding: 2px 0;
+    padding-right: 8px;
+    color: #00dfc4;
+    border-right: 1px solid #00dfc4;
+
+}
+.containerr .form .inputBox i{
+    color: #00dfc4;
+    /* background-color: #223288; */
+    position: absolute;
+    right: 10px;
+    top: 10%;
+}
+.containerr .form .inputBox input[type="submit"]{
+    background-color: #00dfc4;
+    color: #223243;
+    padding: 5px 0;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+    5px 10px 15px rgba(0, 0, 0, 0.35),
+    inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+    inset 5px 10px 15px rgba(0, 0, 0, 0.35);
+
+}
+.containerr .form p{
+    color: rgba(255, 255, 255, 0.5);;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.containerr .form p a{
+    color: white;
+    font-weight: 400;
+    text-decoration: underline;
+}
