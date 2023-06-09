@@ -20,7 +20,7 @@ const AuthProvider = ({ children }) => {
     }
 
     const createUser = (email, password) => {
-        setLoading(true)
+        // setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
     const updateUserProfile = (name, photoUrl) => {
@@ -36,7 +36,7 @@ const AuthProvider = ({ children }) => {
         })
     }
     const signInUser = (email, password) => {
-        setLoading(true)
+        // setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 

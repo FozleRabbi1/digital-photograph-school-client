@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../AuthProviderFile/AuthProvider";
+import SocialLogin from "../../SharedFile/NavBarFile/SocialLogin/SocialLogin";
 
 const Login = () => {
     const { signInUser } = useContext(AuthContext)
@@ -12,9 +13,11 @@ const Login = () => {
     const navigate = useNavigate()
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
+    const [error, setError] = useState(" ")
 
 
     const onSubmit = data => {
+        setError(" ")
         const { email, password } = data;
         signInUser(email, password)
             .then(res => {
@@ -24,7 +27,7 @@ const Login = () => {
                     navigate(from, { replace: true })
                 }
             })
-            .catch(err => console.error(err.message))
+            .catch(err => setError(err.message))
     };
 
 
@@ -39,7 +42,7 @@ const Login = () => {
             <div className='containerr opacity-90'>
                 <form onSubmit={handleSubmit(onSubmit)} className='form signUp'>
                     {errors.password && <small className="text-red-500">{errors.password.message}</small>}
-                    <h2>Sign In</h2>
+                    <h2 >Sign In</h2>
                     <div className="inputBox">
                         <input
                             name="email"
@@ -127,13 +130,17 @@ const Login = () => {
                                 <FontAwesomeIcon onClick={() => setShowPass(!showPass)} icon={faEyeSlash} ></FontAwesomeIcon>
                         }</i>
                     </div> */}
+                    {
+                        error && <p className="text-red-500">{error}</p>
+                    }
 
                     <div className="inputBox">
                         <input type="submit" value=" LogIn " />
                     </div>
-                    <p className="-mb-2">Do not have an account ? <Link to={"/register"} >Sign Up</Link> </p>
+                    <p className="-mb-2 ">Do not have an account ? <Link to={"/register"} >Sign Up</Link> </p>
                     <span className="text-white -my-3 ">or</span>
-                    <p>social login</p>
+                    
+                    <SocialLogin></SocialLogin>
                 </form>
 
 

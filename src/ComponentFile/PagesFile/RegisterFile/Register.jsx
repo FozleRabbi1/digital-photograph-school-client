@@ -3,10 +3,12 @@ import photography from "../../../ComponentFile/AllAnimation/Photography_03.json
 import { faEnvelope, faEye, faEyeSlash, faImage, faUnlockKeyhole, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import '../../SharedFile/RegisteAndLoginStyle.css'
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../AuthProviderFile/AuthProvider";
+import SocialLogin from "../../SharedFile/NavBarFile/SocialLogin/SocialLogin";
+import Swal from "sweetalert2";
 
 const Register = () => {
     const [againShowPass, setAgainShowPass] = useState(false);
@@ -14,6 +16,7 @@ const Register = () => {
     const { register, handleSubmit, watch, formState: { errors, touchedFields } } = useForm();
     const password = watch('password');
     const { createUser, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate()
 
     const onSubmit = data => {
         const { name, email, photoUrl, password } = data;
@@ -22,10 +25,23 @@ const Register = () => {
         createUser(email, password)
             .then(data => {
                 console.log(" create user ====>>  ", data)
+                navigate("/")
+
+                if (data.user) {
+                    Swal.fire({
+                        position: '',
+                        icon: 'success',
+                        title: 'Register Success Full',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+
 
                 updateUserProfile(name, photoUrl)
                     .then((res) => {
                         console.log("update ===>> ", res)
+
 
                     })
                     .catch(() => { })
@@ -220,7 +236,7 @@ const Register = () => {
                     <p className="-mb-2" >already a member ? <Link to={"/login"} >Log in</Link> </p>
                     <span className="text-white -my-3 ">or</span>
 
-                    {/* <SocialLogin></SocialLogin> */}
+                    <SocialLogin></SocialLogin>
 
                 </form>
 

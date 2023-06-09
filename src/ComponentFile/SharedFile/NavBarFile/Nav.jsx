@@ -57,12 +57,12 @@ function Nav() {
                                     </ActiveLink>
 
 
-                                    <ActiveLink to={"dashboard "} className="">
+                                    <ActiveLink to={"/dashboard "} className="">
                                         Dashboard
                                     </ActiveLink>
 
 
-                                    <ActiveLink to={"login"}>
+                                    <ActiveLink to={"/login"}>
                                         {
                                             user ? <button onClick={LogOutFun}>LogOut</button> : " Login "
                                         }
@@ -70,7 +70,7 @@ function Nav() {
                                     </ActiveLink>
 
 
-                                    <ActiveLink to={"register"}>
+                                    <ActiveLink to={"/register"}>
                                         Register
                                     </ActiveLink>
 
