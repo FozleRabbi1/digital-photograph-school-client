@@ -10,7 +10,7 @@ function Nav() {
     const { bgThim } = useContext(ThimProviders)
     const { darkThim, lightThim } = useContext(ThimProviders);
     const { user, loginOut } = useContext(AuthContext);
-    console.log(user)
+    // console.log(user)
 
     const bgThimHandlerDark = () => {
         darkThim("dark")
@@ -21,7 +21,7 @@ function Nav() {
     }
 
     const LogOutFun = () => {
-        loginOut() 
+        loginOut()
     }
 
     return (
@@ -47,19 +47,23 @@ function Nav() {
                                     </ActiveLink>
 
 
-                                    <ActiveLink to={"instructors"} className="">
+                                    <ActiveLink to={"/instructors"} className="">
                                         Instructors
                                     </ActiveLink>
 
 
-                                    <ActiveLink to={"classes"} className="">
+                                    <ActiveLink to={"/classes"} className="">
                                         Classes
                                     </ActiveLink>
 
+                                    {
+                                        user &&
+                                        <ActiveLink to={"/dashboard "} className="">
+                                            Dashboard
+                                        </ActiveLink>
+                                    }
 
-                                    <ActiveLink to={"/dashboard "} className="">
-                                        Dashboard
-                                    </ActiveLink>
+
 
 
                                     <ActiveLink to={"/login"}>

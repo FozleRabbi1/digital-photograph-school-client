@@ -22,26 +22,38 @@ const Register = () => {
         const { name, email, photoUrl, password } = data;
         console.log(name, email, photoUrl, password)
 
+        const userData = { name, email }
+
         createUser(email, password)
             .then(data => {
                 console.log(" create user ====>>  ", data)
                 navigate("/")
 
-                if (data.user) {
-                    Swal.fire({
-                        position: '',
-                        icon: 'success',
-                        title: 'Register Success Full',
-                        showConfirmButton: false,
-                        timer: 1500
+                fetch("http://localhost:5000/users", {
+                    method: "POST",
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify(userData)
+                })
+                    .then(data => {
+                        console.log("data 2 ========", data)
+                        if (data) {
+                            navigate("/")
+                            Swal.fire({
+                                position: '',
+                                icon: 'success',
+                                title: 'Register successfull',
+                                showConfirmButton: false,
+                                timer: 1000
+                            })
+                        }
                     })
-                }
-
-
+                    .catch(err => console.log(err.message))
+                    
                 updateUserProfile(name, photoUrl)
                     .then((res) => {
                         console.log("update ===>> ", res)
-
 
                     })
                     .catch(() => { })

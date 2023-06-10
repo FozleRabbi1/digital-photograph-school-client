@@ -1,15 +1,56 @@
 import { useContext } from "react";
 import Nav from "../SharedFile/NavBarFile/Nav";
 import { ThimProviders } from "../ThimProviderFile/ThimProvider";
+import { Link, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
-    const {bgThim} = useContext(ThimProviders)
+    const { bgThim } = useContext(ThimProviders)
+
+    const student = false;
+    const Instructor = false;
     return (
         <div className={`${bgThim === "dark" ? "bg-gray-900 text-white" : "bg-white"} `}>
 
             <Nav></Nav>
 
-            this is dash board
+            <div className="drawer lg:drawer-open">
+                <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+                <div className="drawer-content flex flex-col items-center justify-center">
+
+                    <Outlet></Outlet>
+
+                    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+
+                </div>
+                <div className="drawer-side">
+                    <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+
+                    {
+                        student ?
+                            <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+
+                                <li> <Link to={"/dashboard/selectedClass"}>Selected Classes</Link> </li>
+                                <li> <Link to={"/dashboard/exrolledClass"}>Enrolled Classes</Link> </li>
+
+                            </ul>
+                            : Instructor ?
+
+                                <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                                    <li> <Link to={"/dashboard/addedClass"}>Add a Class</Link> </li>
+                                    <li> <Link to={"/dashboard/myClasses"}>My Classes</Link> </li>
+                                </ul>
+
+                                :
+
+                                <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                                    <li> <Link to={"/dashboard/manageUser"}>Manage User</Link> </li>
+                                    <li> <Link to={"/dashboard/managClass"}>Manage Classes</Link> </li>
+                                </ul>
+                    }
+
+
+                </div>
+            </div>
 
 
         </div>

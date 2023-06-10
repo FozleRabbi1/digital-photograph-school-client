@@ -13,21 +13,21 @@ const SocialLogin = () => {
 
     const googleLogin = () => {
         googleSignUp()
-            .then(() => {
-            // .then((res) => {
-                // const userData = { name: res.user.displayName, email: res.user.email }
-                
-                // if (res.user) {
-                //     fetch("http://localhost:5000/users", {
-                //         method: "POST",
-                //         headers: {
-                //             'Content-type': 'application/json'
-                //         },
-                //         body: JSON.stringify(userData)
-                //     })
-                //     navigate(from, { replace: true })
-                // }
-                navigate(from, { replace: true })
+            // .then(() => {
+            .then((res) => {
+                const userData = { name: res.user.displayName, email: res.user.email }
+
+                if (res.user) {
+                    fetch("http://localhost:5000/users", {
+                        method: "POST",
+                        headers: {
+                            'Content-type': 'application/json'
+                        },
+                        body: JSON.stringify(userData)
+                    })
+                    navigate(from, { replace: true })
+                }
+                // navigate(from, { replace: true })
             })
     }
     return (
