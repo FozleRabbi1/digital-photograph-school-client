@@ -9,7 +9,7 @@ const useCourseData = () => {
             return res.json();      // =============>>>  useAxiosSecure use korle res.json() use kora lagto na  use axios er moddhei convart hoye jeto
         }
     })
-    console.log(datas)
+    // console.log(datas)
     return [datas, loading, refetch]
 }
 export default useCourseData;

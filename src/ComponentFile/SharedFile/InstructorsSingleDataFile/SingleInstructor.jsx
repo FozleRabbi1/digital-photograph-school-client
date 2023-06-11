@@ -7,7 +7,7 @@ const SingleInstructor = ({ data }) => {
     // console.log(data)
     const { bgThim } = useContext(ThimProviders)
     const location = useLocation();
-    console.log(location.pathname)
+    // console.log(location.pathname)
 
     return (
         <div>

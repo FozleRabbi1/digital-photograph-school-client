@@ -5,14 +5,17 @@ import Lottie from "lottie-react";
 import Loading from "../../../AllAnimation/LofingDote.json"
 import PopulerClass from "../PopulerClassFile/PopulerClass";
 import Instructor from "../InstructorFile/Instructor";
+// import useSelectCourseData from "../../../HooksFile/useSelectCourseData";
 
 const Home = () => {
     const { bgThim } = useContext(ThimProviders)
+    // const [Selecteddatas, refetch] = useSelectCourseData();
 
     const [loader, setLoader] = useState(true);
     useEffect(() => {
         setTimeout(() => {
             setLoader(false)
+            // refetch()            
         }, 1000);
     })
 

@@ -21,7 +21,7 @@ const AuthProvider = ({ children }) => {
     }
 
     const createUser = (email, password) => {
-        // setLoading(true)
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
     const updateUserProfile = (name, photoUrl) => {
@@ -37,7 +37,7 @@ const AuthProvider = ({ children }) => {
         })
     }
     const signInUser = (email, password) => {
-        // setLoading(true)
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
@@ -50,7 +50,7 @@ const AuthProvider = ({ children }) => {
                 axios.post("http://localhost:5000/jwt", { email: currentUser.email })
                     .then(data => {
                         const token = data.data.token;
-                        console.log(token)
+                      // console.log(token)
                         localStorage.setItem("access-token", token)
                         setLoading(false)
                     })
@@ -69,6 +69,7 @@ const AuthProvider = ({ children }) => {
     const loginOut = () => {
         setUser(null)
         signOut(auth)
+        // signOut()
     }
 
     const authUser = {

@@ -5,9 +5,10 @@ import useSelectCourseData from "../../../HooksFile/useSelectCourseData";
 import Swal from "sweetalert2";
 
 const SelectedClass = () => {
-    const [Selecteddatas, refetch] = useSelectCourseData();
+    const [selecteddatas, refetch, loading] = useSelectCourseData();
+    console.log(selecteddatas)
 
-    console.log(Selecteddatas)
+
 
     const updateHandaler = () => {
 
@@ -56,7 +57,7 @@ const SelectedClass = () => {
                     {/* head */}
                     <thead className="">
                         <tr className="rounded-md" >
-                            <th className="bg-indigo-300 text-base rounded-md " >total {Selecteddatas.length}  <br /> S/N </th>
+                            <th className="bg-indigo-300 text-base rounded-md " >total {selecteddatas.length}  <br /> S/N </th>
                             <th className="bg-indigo-300 text-base rounded-md  " >Img</th>
                             <th className="bg-indigo-300 text-base rounded-md " >Instructor Name</th>
                             <th className="bg-indigo-300 text-base rounded-md " >Category</th>
@@ -69,7 +70,7 @@ const SelectedClass = () => {
                     <tbody>
                         {/* row 1 */}
                         {
-                            Selecteddatas?.map((data, index) =>
+                            selecteddatas?.length && selecteddatas?.map((data, index) =>
                                 <tr key={data._id}>
                                     <th>
                                         <label>

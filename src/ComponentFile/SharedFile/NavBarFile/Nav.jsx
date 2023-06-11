@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Transition } from "@headlessui/react";
 import ActiveLink from "./ActiveLink";
 import { ThimProviders } from "../../ThimProviderFile/ThimProvider";
@@ -11,10 +11,15 @@ function Nav() {
     const [isOpen, setIsOpen] = useState(false);
     const { bgThim } = useContext(ThimProviders)
     const { darkThim, lightThim } = useContext(ThimProviders);
-    const { user, loginOut } = useContext(AuthContext);
+    const { user, loginOut, loading } = useContext(AuthContext);
     const location = useLocation();
-    const [Selecteddatas] = useSelectCourseData();
+    const [Selecteddatas, refetch] = useSelectCourseData();
     // console.log(user)
+
+    // useEffect(() => {
+    //     console.log(user?.email)
+    //     refetch()
+    // }, [user?.email, refetch])
 
     const bgThimHandlerDark = () => {
         darkThim("dark")
@@ -65,7 +70,7 @@ function Nav() {
                                         <ActiveLink to={"/dashboard "} className="relative">
                                             Dashboard
                                             {/* <span className=" absolute top-1 "> {Selecteddatas.length}</span> */}
-                                            
+
                                             <div className="badge badge-secondary bg-transparent ms-2">{Selecteddatas.length || 0}</div>
                                         </ActiveLink>
                                     }

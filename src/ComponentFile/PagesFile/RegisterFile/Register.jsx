@@ -20,13 +20,13 @@ const Register = () => {
 
     const onSubmit = data => {
         const { name, email, photoUrl, password } = data;
-        console.log(name, email, photoUrl, password)
+      // console.log(name, email, photoUrl, password)
 
         const userData = { name, email }
 
         createUser(email, password)
             .then(data => {
-                console.log(" create user ====>>  ", data)
+              // console.log(" create user ====>>  ", data)
                 navigate("/")
 
                 fetch("http://localhost:5000/users", {
@@ -37,7 +37,7 @@ const Register = () => {
                     body: JSON.stringify(userData)
                 })
                     .then(data => {
-                        console.log("data 2 ========", data)
+                      // console.log("data 2 ========", data)
                         if (data) {
                             navigate("/")
                             Swal.fire({
@@ -53,13 +53,13 @@ const Register = () => {
                     
                 updateUserProfile(name, photoUrl)
                     .then((res) => {
-                        console.log("update ===>> ", res)
+                      // console.log("update ===>> ", res)
 
                     })
                     .catch(() => { })
 
             }).catch(err => {
-                console.log(err.message)
+              // console.log(err.message)
             })
 
     };

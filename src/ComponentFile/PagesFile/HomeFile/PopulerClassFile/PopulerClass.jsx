@@ -12,12 +12,12 @@ const PopulerClass = () => {
     const [datas] = useCourseData();
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
-    const [,refetch] = useSelectCourseData()
+    const [, refetch] = useSelectCourseData()
 
     const seleceClassHendler = (data) => {
 
         const { _id, ...rest } = data;
-        const datas = { ...rest };
+        const datas = { email: user?.email, ...rest };
 
         if (user && user.email) {
 
