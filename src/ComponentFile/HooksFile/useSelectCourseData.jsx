@@ -7,14 +7,12 @@ const useSelectCourseData = () => {
     const [axiosSecure] = useAxiosSecure()
 
     const { user, loading } = useContext(AuthContext)
-    console.log(user?.email)
 
     const { data: selecteddatas = [], refetch } = useQuery({
         queryKey: ['course', user?.email],
         enabled: !!user?.email && !!localStorage.getItem("access-token"),   // TODO
         queryFn: async () => {
             const response = await axiosSecure(`http://localhost:5000/course?email=${user?.email}`)
-            console.log(response)
             return response.data;
         },
     })
