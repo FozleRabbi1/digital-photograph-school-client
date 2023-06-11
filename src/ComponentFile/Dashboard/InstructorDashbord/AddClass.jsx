@@ -59,8 +59,8 @@ const AddClass = () => {
         <div>
 
 
-            <div className="formDiv pb-24 pt-10">
-                <form onSubmit={handleSubmit(onSubmit)} className="bg-gray-500 w-10/12 mx-auto py-8 rounded-lg px-10 ">
+            <div className="formDiv pb-24 pt-5">
+                <form onSubmit={handleSubmit(onSubmit)} className="bg-indigo-300 w-10/12 mx-auto py-8 rounded-lg px-10 ">
 
                     <div className="flex">
                         <div className="form-control w-full  ">

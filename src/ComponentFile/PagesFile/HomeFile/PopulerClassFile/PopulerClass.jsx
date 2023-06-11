@@ -15,8 +15,9 @@ const PopulerClass = () => {
     const [, refetch] = useSelectCourseData()
 
     const seleceClassHendler = (data) => {
+        console.log(data)
 
-        const { _id, ...rest } = data;
+        const { _id, email, ...rest } = data;
         const datas = { email: user?.email, ...rest };
 
         if (user && user.email) {

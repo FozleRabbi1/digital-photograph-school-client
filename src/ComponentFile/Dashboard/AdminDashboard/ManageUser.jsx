@@ -78,7 +78,7 @@ const ManageUser = () => {
                     <thead className="">
                         <tr className="rounded-md" >
                             <th className="bg-indigo-100 text-base rounded-md " >total {users.length}  <br /> S/N </th>
-                            <th className="bg-indigo-100 text-base rounded-md  " >Img</th>
+                            <th className="bg-indigo-100 text-base rounded-md  " >Image</th>
                             <th className="bg-indigo-100 text-base rounded-md " > Name</th>
                             <th className="bg-indigo-100 text-base rounded-md " >Admin</th>
                             <th className="bg-indigo-100 text-base rounded-md " >Users</th>
