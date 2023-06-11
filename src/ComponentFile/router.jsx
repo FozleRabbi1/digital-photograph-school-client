@@ -13,6 +13,9 @@ import MyClasses from "./Dashboard/InstructorDashbord/MyClasses";
 import AddClass from "./Dashboard/InstructorDashbord/AddClass";
 import ManageUser from "./Dashboard/AdminDashboard/ManageUser";
 import ManageClasses from "./Dashboard/AdminDashboard/ManageClasses";
+import Payment from "./Dashboard/StudentDashbord/Payment";
+import AdminRoute from "./Privateroute/AdminRoute";
+import InstructorRoute from "./Privateroute/InstructorRoute";
 
 
 export const router = createBrowserRouter([
@@ -32,12 +35,33 @@ export const router = createBrowserRouter([
                 <Dashboard></Dashboard>
             </PrivateRoute>,
         children: [
-            { path: "selectedClass", element : <SelectedClass></SelectedClass> },
-            { path: "exrolledClass", element : <EnrolledClass></EnrolledClass> },
-            { path: "addedClass", element : <AddClass></AddClass> },
-            { path: "myClasses", element : <MyClasses></MyClasses> },
-            { path: "manageUser", element : <ManageUser></ManageUser> },
-            { path: "managClass", element :<ManageClasses></ManageClasses> },
+            { path: "selectedClass", element: <SelectedClass></SelectedClass> },
+            { path: "selectedClass", element: <SelectedClass></SelectedClass> },
+            { path: "payment/:id", element: <Payment></Payment> },
+            {
+                path: "addedClass", element:
+                    <InstructorRoute>
+                        <AddClass></AddClass>
+                    </InstructorRoute>
+            },
+            {
+                path: "myClasses", element:
+                    <InstructorRoute>
+                        <MyClasses></MyClasses>
+                    </InstructorRoute>
+            },
+            {
+                path: "manageUser", element:
+                    <AdminRoute>
+                        <ManageUser></ManageUser>
+                    </AdminRoute>
+            },
+            {
+                path: "managClass", element:
+                    <AdminRoute>
+                        <ManageClasses></ManageClasses>
+                    </AdminRoute>
+            },
         ]
     }
 ])

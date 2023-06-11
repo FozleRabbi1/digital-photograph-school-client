@@ -22,7 +22,7 @@ const Register = () => {
         const { name, email, photoUrl, password } = data;
       // console.log(name, email, photoUrl, password)
 
-        const userData = { name, email }
+        const userData = { name, email, image : photoUrl }
 
         createUser(email, password)
             .then(data => {

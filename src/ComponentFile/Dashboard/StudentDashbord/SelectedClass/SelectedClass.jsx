@@ -3,6 +3,7 @@ import { AiFillEye } from "react-icons/ai";
 import { FaCcAmazonPay } from "react-icons/fa";
 import useSelectCourseData from "../../../HooksFile/useSelectCourseData";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const SelectedClass = () => {
     const [selecteddatas, refetch, loading] = useSelectCourseData();
@@ -98,7 +99,9 @@ const SelectedClass = () => {
                                         <button onClick={() => deleteHandaler(data._id)} className="bg-gray-600 rounded-full p-2 btn-ghost text-white"><RiDeleteBin2Fill className="text-2xl text-red-500 "></RiDeleteBin2Fill></button>
                                     </th>
                                     <th>
-                                        <button onClick={() => PayHandaler(data._id)} className="bg-gray-600 rounded-full p-2 btn-ghost text-white"><FaCcAmazonPay className="text-2xl text-green-500 "></FaCcAmazonPay></button>
+                                        {/* <button onClick={() => PayHandaler(data._id)} className="bg-gray-600 rounded-full p-2 btn-ghost text-white"><FaCcAmazonPay className="text-2xl text-green-500 "></FaCcAmazonPay></button> */}
+                                        <button onClick={() => PayHandaler(data._id)} className="bg-gray-600 rounded-full p-2 btn-ghost text-white">  <Link to={`/dashboard/payment/${data._id}`}><FaCcAmazonPay className="text-2xl text-green-500 "></FaCcAmazonPay></Link> </button>
+                                        {/* <Link to={`/dashboard/payment/${data._id}`}></Link> */}
                                     </th>
                                 </tr>
                             )
