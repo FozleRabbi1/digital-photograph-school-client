@@ -6,8 +6,8 @@ import { Link, Outlet } from "react-router-dom";
 const Dashboard = () => {
     const { bgThim } = useContext(ThimProviders)
 
-    const student = false;
-    const Instructor = false;
+    const student = true;
+    const Instructor = false;   
     return (
         <div className={`${bgThim === "dark" ? "bg-gray-900 text-white" : "bg-white"} `}>
 
@@ -15,7 +15,7 @@ const Dashboard = () => {
 
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content flex flex-col items-center justify-center">
+                <div className="drawer-content flex flex-col ">
 
                     <Outlet></Outlet>
 
@@ -27,10 +27,10 @@ const Dashboard = () => {
 
                     {
                         student ?
-                            <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                            <ul className="menu p-4 w-80 h-full bg-base-200 text-indigo-content text-base font-semibold">
 
-                                <li> <Link to={"/dashboard/selectedClass"}>Selected Classes</Link> </li>
-                                <li> <Link to={"/dashboard/exrolledClass"}>Enrolled Classes</Link> </li>
+                                <li className={`${bgThim === "dark" ? "bg-gray-800" : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/dashboard/selectedClass"}>Selected Classes</Link> </li>
+                                <li className={`${bgThim === "dark" ? "bg-gray-800" : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/dashboard/exrolledClass"}>Enrolled Classes</Link> </li>
 
                             </ul>
                             : Instructor ?

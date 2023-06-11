@@ -1,13 +1,64 @@
 import { useContext } from "react";
 import useCourseData from "../../../HooksFile/useCourseData";
 import { ThimProviders } from "../../../ThimProviderFile/ThimProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import { AuthContext } from "../../../AuthProviderFile/AuthProvider";
+import Swal from "sweetalert2";
+import useSelectCourseData from "../../../HooksFile/useSelectCourseData";
 
 const PopulerClass = () => {
     const { bgThim } = useContext(ThimProviders)
     const [datas] = useCourseData();
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const [,refetch] = useSelectCourseData()
 
+    const seleceClassHendler = (data) => {
+
+        const { _id, ...rest } = data;
+        const datas = { ...rest };
+
+        if (user && user.email) {
+
+            fetch("http://localhost:5000/course", {
+                method: "POST",
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(datas)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.acknowledged) {
+                        refetch() // update the number of the cart
+                        Swal.fire({
+                            position: '',
+                            icon: 'success',
+                            title: 'successfully added your product',
+                            showConfirmButton: false,
+                            timer: 1000
+                        })
+                    }
+                })
+                .catch(err => console.error(err.message))
+        }
+        else {
+            Swal.fire({
+                title: 'Please Login Firse',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Go to login page'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate("/login", { state: { from: location } })
+                }
+            })
+        }
+
+    }
 
 
     return (
@@ -31,6 +82,10 @@ const PopulerClass = () => {
                                 <p>  <span className="font-bold" >Total sit No</span> : {data.totalSit}</p>
                                 <p className=" font-bold">  <span className="" >Price</span > : <span className="text-red-500"> {data.price} $ /=</span></p>
                                 <span className="text-lg font-bold italic"> Available seats : <span className="text-red-500"> {data.totalSit - data.numberOfStudents}</span>  </span>
+                            </div>
+
+                            <div className="flex justify-end">
+                                <button onClick={() => seleceClassHendler(data)} className={`${bgThim === "dark" ? "border-[1px]" : ""} border-[1px]  bg-transparent shadow-xl mb-5 me-5 py-1 px-3 rounded-2xl hover:bg-slate-300 duration-700 hover:text-black font-semibold`}>Select Class</button>
                             </div>
 
                         </div>)

@@ -30,7 +30,6 @@ const Home = () => {
 
                         <Instructor></Instructor>
 
-                        <p>this is home</p>
 
 
                     </div>

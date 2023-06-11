@@ -4,12 +4,16 @@ import ActiveLink from "./ActiveLink";
 import { ThimProviders } from "../../ThimProviderFile/ThimProvider";
 import './Nav.css'
 import { AuthContext } from "../../AuthProviderFile/AuthProvider";
+import { useLocation } from "react-router-dom";
+import useSelectCourseData from "../../HooksFile/useSelectCourseData";
 
 function Nav() {
     const [isOpen, setIsOpen] = useState(false);
     const { bgThim } = useContext(ThimProviders)
     const { darkThim, lightThim } = useContext(ThimProviders);
     const { user, loginOut } = useContext(AuthContext);
+    const location = useLocation();
+    const [Selecteddatas] = useSelectCourseData();
     // console.log(user)
 
     const bgThimHandlerDark = () => {
@@ -26,7 +30,7 @@ function Nav() {
 
     return (
         <div className="sticky top-0 z-50">
-            <nav className={`${bgThim === "light" ? "bg-gray-700" : "bg-gray-800"} py-1  `}>
+            <nav className={`${location.pathname.includes("dashboard") ? "bg-indigo-300" : ""} ${bgThim === "light" ? "bg-gray-700" : "bg-gray-800"} py-1  `}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">
                         <div className="flex w-full items-center justify-between ">
@@ -58,8 +62,11 @@ function Nav() {
 
                                     {
                                         user &&
-                                        <ActiveLink to={"/dashboard "} className="">
+                                        <ActiveLink to={"/dashboard "} className="relative">
                                             Dashboard
+                                            {/* <span className=" absolute top-1 "> {Selecteddatas.length}</span> */}
+                                            
+                                            <div className="badge badge-secondary bg-transparent ms-2">{Selecteddatas.length || 0}</div>
                                         </ActiveLink>
                                     }
 
