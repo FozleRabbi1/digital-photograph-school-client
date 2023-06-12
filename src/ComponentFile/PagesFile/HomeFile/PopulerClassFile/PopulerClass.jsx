@@ -79,10 +79,10 @@ const PopulerClass = () => {
                             <div className={`text p-3`}>
                                 <h2> <span className="font-bold" >Category</span> : {data.title}</h2>
                                 <h2> <span className="font-bold" >Instructor</span> : {data.instructorName}</h2>
-                                <p>  <span className="font-bold" >Present Student</span> : {data.numberOfStudents}</p>
                                 <p>  <span className="font-bold" >Total sit No</span> : {data.totalSit}</p>
-                                <p className=" font-bold">  <span className="" >Price</span > : <span className="text-red-500"> {data.price} $ /=</span></p>
+                                <p>  <span className="font-bold" >Present Student</span> : {data.numberOfStudents}</p>
                                 <span className="text-lg font-bold italic"> Available seats : <span className="text-red-500"> {data.totalSit - data.numberOfStudents}</span>  </span>
+                                <p className=" font-bold">  <span className="" >Price</span > : <span className="text-red-500"> {data.price} $ /=</span></p>
                             </div>
 
                             <div className="flex justify-end">

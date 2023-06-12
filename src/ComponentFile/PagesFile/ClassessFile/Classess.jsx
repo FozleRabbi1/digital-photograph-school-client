@@ -73,14 +73,14 @@ const Classess = () => {
                             // className={`${bgThim === "dark" ? " drop-shadow-xl shadow-white	 " : "drop-shadow-2xl"}`}
                             key={data._id}>
 
-                            <img className="h-60 rounded-lg" src={data.image} alt="" />
+                            <img className="h-60 rounded-lg w-full" src={data.image} alt="" />
 
                             <div className={`${bgThim === "dark" ? "darkStylee" : "lightStylee"} text p-3`}>
                                 {/* <div className={`${bgThim === "dark" ? "darkStyle" : "lightStyle"} text p-3`}> */}
                                 <h2>Category : {data.title}</h2>
                                 <h2>Instructor : {data.instructorName}</h2>
-                                <p>Present Students : {data.numberOfStudents}</p>
                                 <p>Total seats No : {data.totalSit}</p>
+                                <p>Present Students : {data.numberOfStudents}</p>
 
                                 <span className="text-lg font-bold italic"> Available seats : <span className="text-red-500"> {data.totalSit - data.numberOfStudents}</span>  </span>
                             </div>
