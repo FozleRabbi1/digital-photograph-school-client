@@ -89,7 +89,7 @@ const ManageUser = () => {
                         {/* row 1 */}
                         {
                             users?.length && users?.map((data, index) =>
-                                <tr key={data._id}>
+                                <tr key={data._id} className="hover:bg-indigo-50 hover:text-black duration-500">
                                     <th>
                                         <label>
                                             {index + 1}

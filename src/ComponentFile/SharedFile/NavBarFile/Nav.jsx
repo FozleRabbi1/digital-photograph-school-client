@@ -56,13 +56,13 @@ function Nav() {
                                     </ActiveLink>
 
 
-                                    <ActiveLink to={"/instructors"} className="">
-                                        Instructors
+                                    <ActiveLink to={"/classes"} className="">
+                                        Classes
                                     </ActiveLink>
 
 
-                                    <ActiveLink to={"/classes"} className="">
-                                        Classes
+                                    <ActiveLink to={"/instructors"} className="">
+                                        Instructors
                                     </ActiveLink>
 
                                     {
