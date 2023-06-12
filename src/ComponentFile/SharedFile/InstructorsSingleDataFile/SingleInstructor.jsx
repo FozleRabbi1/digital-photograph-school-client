@@ -25,6 +25,7 @@ const SingleInstructor = ({ data }) => {
                                 <p><span className="font-bold">Category</span> : {data.title}</p>
                             </>
                         }
+                         <p><span className="font-bold">Email</span> : {data.email}</p>
                         <p> <span className="font-bold">Present Student</span> : {data.numberOfStudents}</p>
                         
                     </div>

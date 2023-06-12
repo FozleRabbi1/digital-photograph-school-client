@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import useSelectCourseData from "../../HooksFile/useSelectCourseData";
 import { AuthContext } from "../../AuthProviderFile/AuthProvider";
 import Swal from "sweetalert2";
+import useAdmin from "../../HooksFile/useAdmin";
+import useInstructor from "../../HooksFile/useInstructor";
 
 const Classess = () => {
     const { bgThim } = useContext(ThimProviders)
@@ -12,6 +14,8 @@ const Classess = () => {
     const navigate = useNavigate();
     const [, refetch] = useSelectCourseData()
     const { user } = useContext(AuthContext);
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
 
     const seleceClassHendler = (data) => {
 
@@ -69,7 +73,7 @@ const Classess = () => {
                 {
                     datas?.map(data =>
                         <div
-                            className={`rounded-lg ${bgThim === "dark" ? " border-[2px] border-indigo-400 border-x-indigo-500" : " border-[2px]"}`}
+                            className={`${data.totalSit - data.numberOfStudents === 0 && "bg-red-400"} rounded-lg ${bgThim === "dark" ? " border-[2px] border-indigo-400 border-x-indigo-500" : " border-[2px]"}`}
                             // className={`${bgThim === "dark" ? " drop-shadow-xl shadow-white	 " : "drop-shadow-2xl"}`}
                             key={data._id}>
 
@@ -86,7 +90,15 @@ const Classess = () => {
                             </div>
 
                             <div className="flex justify-end">
-                                <button onClick={() => seleceClassHendler(data)} className={`${bgThim === "dark" ? "border-[1px]" : ""} border-[1px]  bg-transparent shadow-xl mb-5 me-5 py-1 px-3 rounded-2xl hover:bg-slate-300 duration-700 hover:text-black font-semibold`}>Select Class</button>
+                                {
+                                    data.totalSit - data.numberOfStudents < 1 || isAdmin?.admin || isInstructor.instructor ?
+
+                                        <button disabled className={`${bgThim === "dark" ? "border-[1px] text-black" : ""} border-[1px] bg-slate-300 shadow-xl mb-5 me-5 py-1 px-3 rounded-2xl hover:bg-slate-400 duration-700 hover:text-black font-semibold`}>Not Available</button>
+
+                                        :
+                                        <button onClick={() => seleceClassHendler(data)} className={`${bgThim === "dark" ? "border-[1px]" : ""} border-[1px]  bg-transparent shadow-xl mb-5 me-5 py-1 px-3 rounded-2xl hover:bg-slate-300 duration-700 hover:text-black font-semibold`}>Select Class</button>
+                                }
+                                {/* <button onClick={() => seleceClassHendler(data)} className={`${bgThim === "dark" ? "border-[1px]" : ""} border-[1px]  bg-transparent shadow-xl mb-5 me-5 py-1 px-3 rounded-2xl hover:bg-slate-300 duration-700 hover:text-black font-semibold`}>Select Class</button> */}
                             </div>
 
                         </div>)

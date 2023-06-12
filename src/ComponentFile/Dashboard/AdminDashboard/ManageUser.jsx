@@ -105,7 +105,7 @@ const ManageUser = () => {
                                     </td>
                                     <th>
                                         {
-                                            data.role === "admin" ?
+                                            data?.role === "admin" ?
                                                 "Admin"
                                                 :
                                                 <button onClick={() => adminHandaler(data)} className="bg-gray-600 rounded-full p-2 btn-ghost text-white"><FaUserShield className="text-2xl text-green-300 "></FaUserShield></button>
@@ -116,7 +116,7 @@ const ManageUser = () => {
                                     </th>
                                     <th>
                                         {
-                                            data.role === "instructor" ? "Instructor"
+                                            data?.role === "instructor" ? "Instructor"
                                                 :
                                                 <button onClick={() => instructorHandaler(data)} className="bg-gray-600 rounded-full p-2 btn-ghost text-white"><ImUsers className="text-2xl text-indigo-300 "></ImUsers></button>
                                         }

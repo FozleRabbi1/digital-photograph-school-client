@@ -6,9 +6,8 @@ import { useForm } from "react-hook-form";
 import Lottie from "lottie-react";
 import LoadingAnim from "../../../ComponentFile/AllAnimation/loading (2).json"
 
+
 const VITE_image_upload_key = import.meta.env.VITE_image_upload_key
-
-
 const AddClass = () => {
     const { user } = useContext(AuthContext)
     const [axiosSecure] = useAxiosSecure();
@@ -30,10 +29,9 @@ const AddClass = () => {
             .then(imageData => {
                 if (imageData.success) {
                     const imageUrl = imageData.data.display_url;
-                    const { title, price, classTime, courseLength, instructorName, description, totalSit, numberOfStudents } = data;
-                    const newClass = { email: user.email, pending : "pending", title, price: parseFloat(price), classTime, courseLength, instructorName, description, totalSit: parseFloat(totalSit), image: imageUrl, numberOfStudents: parseFloat(numberOfStudents) }
+                    const { title, price, classTime, courseLength, description, totalSit, numberOfStudents } = data;
+                    const newClass = { email: user?.email, pending: "pending", title, price: parseFloat(price), classTime, courseLength, instructorName : user?.displayName, description, totalSit: parseFloat(totalSit), image: imageUrl, numberOfStudents: parseFloat(numberOfStudents) }
 
-                    // console.log(34, newClass)
 
                     axiosSecure.post("/courses", newClass)
                         .then(data => {
@@ -77,8 +75,9 @@ const AddClass = () => {
                                 <span className="label-text font-semibold">Instructor Name</span>
                             </label>
                             <input
-                                {...register("instructorName", { required: true, maxLength: 120 })}
-                                type="text" placeholder="Instructor Name" className="input text-black input-bordered w-full" />
+                                {...register("instructorName")}
+                                readOnly
+                                type="text" placeholder={user?.displayName} className="input text-black input-bordered w-full" />
                         </div>
                     </div>
 
@@ -118,11 +117,21 @@ const AddClass = () => {
 
                     </div>
 
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text"> Nomber Of Student </span>
-                        </label>
-                        <input type="number"  {...register("numberOfStudents", { required: true })} className="text-black textarea textarea-bordered" placeholder="Number Of Student"></input>
+                    <div className="flex">
+                        <div className="form-control w-full ms-2">
+                            <label className="label">
+                                <span className="label-text"> Number Of Student </span>
+                            </label>
+                            <input type="number"  {...register("numberOfStudents", { required: true })} className="text-black textarea textarea-bordered" placeholder="Number Of Student"></input>
+                        </div>
+
+                        <div className="form-control w-full ms-2">
+                            <label className="label">
+                                <span className="label-text"> Email </span>
+                            </label>
+                            <input type="text" readOnly  {...register("userEmail") } className="text-black textarea textarea-bordered" placeholder={user.email}></input>
+                        </div>
+
                     </div>
 
                     <div className="form-control">
@@ -145,7 +154,7 @@ const AddClass = () => {
                         isLoading ? <span className="btn btn-outline btn-secondary bg-white w-72 mt-4 mx-auto  flex justify-center">
                             <Lottie className="w-14 h-10 bg-transparent" animationData={LoadingAnim}></Lottie>
                         </span> :
-                            <input className="btn btn-outline btn-secondary w-72 mt-4 mx-auto block" type="submit" value="ADD ITEM" />
+                            <input className="btn btn-outline btn-secondary w-72 mt-4 mx-auto block" type="submit" value="ADD CLASS" />
                     }
 
                 </form>

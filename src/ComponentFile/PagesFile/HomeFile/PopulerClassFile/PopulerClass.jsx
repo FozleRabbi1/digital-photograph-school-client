@@ -6,8 +6,13 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import { AuthContext } from "../../../AuthProviderFile/AuthProvider";
 import Swal from "sweetalert2";
 import useSelectCourseData from "../../../HooksFile/useSelectCourseData";
+import useAdmin from "../../../HooksFile/useAdmin";
+import useInstructor from "../../../HooksFile/useInstructor";
+
 
 const PopulerClass = () => {
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
     const { bgThim } = useContext(ThimProviders)
     const [datas] = useCourseData();
     const { user } = useContext(AuthContext);
@@ -71,7 +76,7 @@ const PopulerClass = () => {
                 {
                     datas?.slice(0, 6).map(data =>
                         <div
-                            className={`rounded-lg ${bgThim === "dark" ? " border-[2px] border-indigo-400 border-x-indigo-500" : " border-[2px]"}`}
+                            className={`${data.totalSit - data.numberOfStudents === 0 && "bg-red-400"} rounded-lg ${bgThim === "dark" ? " border-[2px] border-indigo-400 border-x-indigo-500" : " border-[2px]"}`}
                             key={data._id}>
 
                             <img className="h-60 rounded-lg w-full" src={data.image} alt="" />
@@ -86,8 +91,15 @@ const PopulerClass = () => {
                             </div>
 
                             <div className="flex justify-end">
-                                <button onClick={() => seleceClassHendler(data)} className={`${bgThim === "dark" ? "border-[1px]" : ""} border-[1px]  bg-transparent shadow-xl mb-5 me-5 py-1 px-3 rounded-2xl hover:bg-slate-300 duration-700 hover:text-black font-semibold`}>Select Class</button>
+                                {/* <button onClick={() => seleceClassHendler(data)} className={`${bgThim === "dark" ? "border-[1px]" : ""} border-[1px]  bg-transparent shadow-xl mb-5 me-5 py-1 px-3 rounded-2xl hover:bg-slate-300 duration-700 hover:text-black font-semibold`}>Select Class</button> */}
+                                {
+                                    data?.totalSit - data?.numberOfStudents < 1 || isAdmin?.admin || isInstructor?.instructor ? <button disabled className={`${bgThim === "dark" ? "border-[1px] text-black" : ""} border-[1px] bg-slate-300 shadow-xl mb-5 me-5 py-1 px-3 rounded-2xl hover:bg-slate-400 duration-700 hover:text-black font-semibold`}>Not Available</button>
+                                        :
+                                        <button onClick={() => seleceClassHendler(data)} className={`${bgThim === "dark" ? "border-[1px]" : ""} border-[1px]  bg-transparent shadow-xl mb-5 me-5 py-1 px-3 rounded-2xl hover:bg-slate-300 duration-700 hover:text-black font-semibold`}>Select Class</button>
+                                }
                             </div>
+
+
 
                         </div>)
                 }

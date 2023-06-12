@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
@@ -12,7 +13,7 @@ const ManageClasses = () => {
     })
     console.log(datas)
 
-    const decisionHendler = (id) => {
+    const decisionAproveHendler = (id) => {
         fetch(`http://localhost:5000/adminAproveCourses/${id}`, {
             method: "PATCH"
         })
@@ -22,6 +23,22 @@ const ManageClasses = () => {
                     position: '',
                     icon: 'success',
                     title: 'Course is approved',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            })
+    }
+
+    const decisionDeniedHendler = (id) => {
+        fetch(`http://localhost:5000/adminDeniedCourses/${id}`, {
+            method: "PATCH"
+        })
+            .then(() => {
+                refetch();
+                Swal.fire({
+                    position: '',
+                    icon: 'success',
+                    title: 'Course is Denied',
                     showConfirmButton: false,
                     timer: 1500
                 })
@@ -51,10 +68,35 @@ const ManageClasses = () => {
                                 <p>Seat : {data.totalSit}</p>
                                 <p> Class Time : {data.classTime}</p>
                             </div>
-                            <div onClick={() => decisionHendler(data._id)} className={`${data.pending === "pending" ? "bg-red-400" : "bg-green-400"} py-1 px-2 rounded-lg font-semibold hover:bg-red-500 duration-500 cursor-pointer italic`}>
+
+                            <div onClick={() => decisionAproveHendler(data._id)} className={` w-24 text-center  ${data.pending === "pending" ? "bg-red-400" : "bg-green-300"} py-1 px-2 rounded-lg font-semibold hover:bg-red-500 duration-500 cursor-pointer italic`}>
+                                <small>Approve</small>
                                 <h2 className="border-b-2">Decision  </h2>
                                 <h2 className="">{data.pending}   </h2>
                             </div>
+
+                            {
+
+
+                                data.pending === "denied" ?
+                                    <div className={`w-24 text-center ${data.pending === "denied" ? "bg-red-600" : "bg-green-100"} py-1 px-2 ms-2 rounded-lg font-semibold hover:bg-red-500 duration-500 cursor-pointer italic`}>
+                                        <h2 className="">{data.pending}   </h2>
+                                        <h2 className="border-b-2">Decision  </h2>
+                                        <Link to={"/dashboard/feedBack"} className="bg-gray-400 text-sm rounded-2xl px-1">FeedBack</Link>
+                                    </div>
+                                    :
+                                    <div onClick={() => decisionDeniedHendler(data._id)} className={`w-24 text-center ${data.pending === "denied" ? "bg-red-600" : "bg-green-100"} py-1 px-2 ms-2 rounded-lg font-semibold hover:bg-red-500 duration-500 cursor-pointer italic`}>
+                                        <small>Denied</small>
+                                        <h2 className="border-b-2">Decision  </h2>
+                                        <h2 className="">{data.pending}   </h2>
+
+                                    </div>
+                            }
+
+                            {/* <button>Fidback</button> */}
+
+
+
                         </div>)
                 }
             </div>

@@ -14,7 +14,6 @@ function Nav() {
     const { user, loginOut, loading } = useContext(AuthContext);
     const location = useLocation();
     const [Selecteddatas, refetch] = useSelectCourseData();
-    // console.log(user)
 
     // useEffect(() => {
     //     console.log(user?.email)
@@ -35,7 +34,7 @@ function Nav() {
 
     return (
         <div className="sticky top-0 z-50">
-            <nav className={`${location.pathname.includes("dashboard") ? "bg-indigo-300" : ""} ${bgThim === "light" ? "bg-gray-700" : "bg-gray-800"} py-1  `}>
+            <nav className={`${location?.pathname.includes("dashboard") ? "bg-indigo-300" : ""} ${bgThim === "light" ? "bg-gray-700" : "bg-gray-800"} py-1  `}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">
                         <div className="flex w-full items-center justify-between ">
@@ -71,7 +70,7 @@ function Nav() {
                                             Dashboard
                                             {/* <span className=" absolute top-1 "> {Selecteddatas.length}</span> */}
 
-                                            <div className="badge badge-secondary bg-transparent ms-2">{Selecteddatas.length || 0}</div>
+                                            <div className="badge badge-secondary bg-transparent ms-2">{Selecteddatas?.length || 0}</div>
                                         </ActiveLink>
                                     }
 
