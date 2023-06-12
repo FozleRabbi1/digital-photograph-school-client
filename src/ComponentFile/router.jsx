@@ -79,7 +79,7 @@ export const router = createBrowserRouter([
                     </AdminRoute>
             },
             {
-                path: "feedBack", element:
+                path: "feedBack/:id", element:
                     <AdminRoute>
                         <Feedback></Feedback>
                     </AdminRoute>

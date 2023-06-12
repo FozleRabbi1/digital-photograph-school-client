@@ -3,22 +3,24 @@ import useAllUsers from "../../HooksFile/useAllUsers";
 import { FaUserShield, FaUsers } from "react-icons/fa";
 import { ImUsers } from "react-icons/im";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../HooksFile/useAxiosSecure";
 
 const ManageUser = () => {
     const [users, refetch] = useAllUsers();
-    console.log(users)
+    const [axiosSecure] = useAxiosSecure();
     useEffect(() => {
         refetch()
     }, [users.email, refetch])
 
     const adminHandaler = (user) => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
-            method: "PATCH"
-        })
-            .then(res => res.json())
+        // fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        //     method: "PATCH"
+        // })
+        axiosSecure.patch(`/users/admin/${user._id}`)
+            .then(res => res.data)
             .then(data => {
                 console.log(data)
-                if (data.modifiedCount) {
+                if (data.modifiedCount > 0) {
                     refetch()
                     Swal.fire({
                         position: '',

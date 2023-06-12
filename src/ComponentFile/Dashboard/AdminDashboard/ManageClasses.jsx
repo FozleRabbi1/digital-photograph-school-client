@@ -82,7 +82,7 @@ const ManageClasses = () => {
                                     <div className={`w-24 text-center ${data.pending === "denied" ? "bg-red-600" : "bg-green-100"} py-1 px-2 ms-2 rounded-lg font-semibold hover:bg-red-500 duration-500 cursor-pointer italic`}>
                                         <h2 className="">{data.pending}   </h2>
                                         <h2 className="border-b-2">Decision  </h2>
-                                        <Link to={"/dashboard/feedBack"} className="bg-gray-400 text-sm rounded-2xl px-1">FeedBack</Link>
+                                        <Link to={`/dashboard/feedBack/${data._id}`} className="bg-gray-400 text-sm rounded-2xl px-1">FeedBack</Link>
                                     </div>
                                     :
                                     <div onClick={() => decisionDeniedHendler(data._id)} className={`w-24 text-center ${data.pending === "denied" ? "bg-red-600" : "bg-green-100"} py-1 px-2 ms-2 rounded-lg font-semibold hover:bg-red-500 duration-500 cursor-pointer italic`}>
