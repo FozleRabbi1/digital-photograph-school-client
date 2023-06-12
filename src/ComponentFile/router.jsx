@@ -17,6 +17,7 @@ import Payment from "./Dashboard/StudentDashbord/Payment";
 import AdminRoute from "./Privateroute/AdminRoute";
 import InstructorRoute from "./Privateroute/InstructorRoute";
 import Feedback from "./Dashboard/AdminFeedBack/Feedback";
+import DashWelcome from "./Dashboard/DashbordWelcomePage/DashWelcome";
 
 
 export const router = createBrowserRouter([
@@ -34,8 +35,15 @@ export const router = createBrowserRouter([
         path: "dashboard", element:
             <PrivateRoute>
                 <Dashboard></Dashboard>
+                {/* <DashWelcome></DashWelcome> */}
             </PrivateRoute>,
         children: [
+            {
+                path: "welcome", element:
+                    <PrivateRoute>
+                        <DashWelcome></DashWelcome>
+                    </PrivateRoute>
+            },
             {
                 path: "selectedClass", element:
                     <PrivateRoute>

@@ -5,6 +5,7 @@ import { Link, Outlet } from "react-router-dom";
 import useAdmin from "../HooksFile/useAdmin";
 import useInstructor from "../HooksFile/useInstructor";
 import { AuthContext } from "../AuthProviderFile/AuthProvider";
+import Footer from "../SharedFile/Footer/Footer";
 
 const Dashboard = () => {
     const { bgThim } = useContext(ThimProviders)
@@ -22,11 +23,14 @@ const Dashboard = () => {
                 <div className="drawer-content flex flex-col ">
 
                     <Outlet></Outlet>
+                    
 
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
                 </div>
-                <div className="drawer-side">
+
+                <div className="drawer-side fixed ">
+
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
                     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
@@ -70,7 +74,9 @@ const Dashboard = () => {
                     </ul>
 
                 </div>
+
             </div>
+            <Footer></Footer>
 
 
         </div >

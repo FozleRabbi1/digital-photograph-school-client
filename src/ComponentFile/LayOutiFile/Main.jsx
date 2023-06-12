@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Nav from "../SharedFile/NavBarFile/Nav";
 import { useContext } from "react";
 import { ThimProviders } from "../ThimProviderFile/ThimProvider";
+import Footer from "../SharedFile/Footer/Footer";
 
 const Main = () => {
     const {bgThim} = useContext(ThimProviders)
@@ -11,7 +12,7 @@ const Main = () => {
 
             <Nav></Nav>
             <Outlet></Outlet>
-
+            <Footer></Footer>
             
         
         </div>

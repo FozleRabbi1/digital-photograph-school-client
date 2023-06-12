@@ -55,7 +55,8 @@ const MyClasses = () => {
                             <th>Image</th>
                             <th>Name</th>
                             <th>Category</th>
-                            <th>Admin Approvial</th>
+                            <th>Enroled Student</th>
+                            <th>Admin Appruval</th>
                             <th>Update</th>
                             <th>Delete</th>
                         </tr>
@@ -75,6 +76,7 @@ const MyClasses = () => {
                                     </td>
                                     <td className="m-0 p-2">{data.instructorName}</td>
                                     <td className="m-0 p-2">{data.title}</td>
+                                    <td className="m-0 p-2">{data.numberOfStudents}</td>
                                     <td className={`${data.pending === "pending" || data.pending === "denied" ? "text-red-500" : "text-green-500"} m-0 p-2 text-lg`}>{data.pending}...</td>
                                     <td className="m-0 p-2"> <AiFillEdit onClick={() => updateHandeler(data._id)} className="text-3xl text-indigo-300 hover:text-indigo-700  duration-700"></AiFillEdit> </td>
                                     <td className="m-0 p-2"> <RiDeleteBin2Fill onClick={() => deleteHandeler(data._id)} className="text-3xl text-red-500 hover:text-red-800  duration-700 "></RiDeleteBin2Fill> </td>

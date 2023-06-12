@@ -66,7 +66,7 @@ function Nav() {
 
                                     {
                                         user &&
-                                        <ActiveLink to={"/dashboard "} className="relative">
+                                        <ActiveLink to={"/dashboard/welcome"} className="relative">
                                             Dashboard
                                             {/* <span className=" absolute top-1 "> {Selecteddatas.length}</span> */}
 
