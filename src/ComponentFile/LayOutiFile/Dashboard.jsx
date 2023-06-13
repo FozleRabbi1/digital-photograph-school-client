@@ -60,7 +60,7 @@ const Dashboard = () => {
                                             <span className="text-xs text-center block m-0 p-0 ">{user.email}</span>
                                         </li>
                                         <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700 " : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/dashboard/selectedClass"}>Selected Classes</Link> </li>
-                                        <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700 " : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/dashboard/exrolledClass"}>Enrolled Classes</Link> </li>
+                                        <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700 " : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/dashboard/enroledClass"}>Enrolled Classes</Link> </li>
                                     </>
 
                         }

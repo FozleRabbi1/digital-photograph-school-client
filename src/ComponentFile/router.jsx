@@ -18,6 +18,7 @@ import AdminRoute from "./Privateroute/AdminRoute";
 import InstructorRoute from "./Privateroute/InstructorRoute";
 import Feedback from "./Dashboard/AdminFeedBack/Feedback";
 import DashWelcome from "./Dashboard/DashbordWelcomePage/DashWelcome";
+import EnroledClass from "./Dashboard/AllUser/EnroledClass";
 
 
 export const router = createBrowserRouter([
@@ -51,9 +52,9 @@ export const router = createBrowserRouter([
                     </PrivateRoute>
             },
             {
-                path: "selectedClass", element:
+                path: "enroledClass", element:
                     <PrivateRoute>
-                        <SelectedClass></SelectedClass>
+                       <EnroledClass></EnroledClass>
                     </PrivateRoute>
             },
             {

@@ -104,7 +104,7 @@ const MyClasses = () => {
                                 <th>S/N</th>
                                 <th>Image</th>
                                 <th>Name</th>
-                                <th>feedBack</th>
+                                <th>Admin FeedBack</th>
                             </tr>
                         </thead>
                         <tbody>

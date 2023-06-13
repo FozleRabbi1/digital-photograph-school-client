@@ -71,7 +71,8 @@ const CheckOut = ({ data, price }) => {
         if (confirmError) {
             console.log(confirmError)
         }
-        console.log(paymentIntent)
+
+        const currentDate = new Date()
 
         setProcessing(false)
         if (paymentIntent.status === "succeeded") {
@@ -84,7 +85,7 @@ const CheckOut = ({ data, price }) => {
                 classId: data?._id,
                 price: price,
                 quantity: 1,
-                date: new Date(),
+                date: currentDate.toLocaleDateString(),
                 title: data?.title,
                 classTime: data?.classTime,
                 courseLength: data?.courseLength,
