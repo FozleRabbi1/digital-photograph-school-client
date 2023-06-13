@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import useSelectCourseData from "../../../HooksFile/useSelectCourseData";
 import useAdmin from "../../../HooksFile/useAdmin";
 import useInstructor from "../../../HooksFile/useInstructor";
+import { Bounce, Fade, Reveal, Zoom } from "react-awesome-reveal";
 
 
 const PopulerClass = () => {
@@ -70,38 +71,50 @@ const PopulerClass = () => {
     return (
         <div>
 
-            <h2 className="text-2xl text-center mt-16 font-bold uppercase">Top 6 Classes</h2>
+            <h2 className="text-2xl text-center mt-16 font-bold uppercase">
+                <Zoom cascade>
+                    Top 6 Classes
+                </Zoom>
+
+            </h2>
 
             <div className="grid md:grid-cols-3 gap-10 w-10/12 mx-auto my-16 ">
                 {
                     datas?.slice(0, 6).map(data =>
-                        <div
-                            className={`${data.totalSit - data.numberOfStudents === 0 && "bg-red-400"} rounded-lg ${bgThim === "dark" ? " border-[2px] border-indigo-400 border-x-indigo-500" : " border-[2px]"}`}
-                            key={data._id}>
+                        // <Reveal key={data._id} effect="fadeInUp">
+                        <Fade bottom key={data._id}>
+                            <div
+                                className={`${data.totalSit - data.numberOfStudents === 0 && "bg-red-400"} rounded-lg ${bgThim === "dark" ? " border-[2px] border-indigo-400 border-x-indigo-500" : " border-[2px]"}`}
 
-                            <img className="h-60 rounded-lg w-full" src={data.image} alt="" />
 
-                            <div className={`text p-3`}>
-                                <h2> <span className="font-bold" >Category</span> : {data.title}</h2>
-                                <h2> <span className="font-bold" >Instructor</span> : {data.instructorName}</h2>
-                                <p>  <span className="font-bold" >Total sit No</span> : {data.totalSit}</p>
-                                <p>  <span className="font-bold" >Present Student</span> : {data.numberOfStudents}</p>
-                                <span className="text-lg font-bold italic"> Available seats : <span className="text-red-500"> {data.totalSit - data.numberOfStudents}</span>  </span>
-                                <p className=" font-bold">  <span className="" >Price</span > : <span className="text-red-500"> {data.price} $ /=</span></p>
+                            >
+
+                                <img className="h-60 rounded-lg w-full" src={data.image} alt="" />
+
+                                <div className={`text p-3`}>
+                                    <h2> <span className="font-bold" >Category</span> : {data.title}</h2>
+                                    <h2> <span className="font-bold" >Instructor</span> : {data.instructorName}</h2>
+                                    <p>  <span className="font-bold" >Total sit No</span> : {data.totalSit}</p>
+                                    <p>  <span className="font-bold" >Present Student</span> : {data.numberOfStudents}</p>
+                                    <span className="text-lg font-bold italic"> Available seats : <span className="text-red-500"> {data.totalSit - data.numberOfStudents}</span>  </span>
+                                    <p className=" font-bold">  <span className="" >Price</span > : <span className="text-red-500"> {data.price} $ /=</span></p>
+                                </div>
+
+                                <div className="flex justify-end">
+                                    {/* <button onClick={() => seleceClassHendler(data)} className={`${bgThim === "dark" ? "border-[1px]" : ""} border-[1px]  bg-transparent shadow-xl mb-5 me-5 py-1 px-3 rounded-2xl hover:bg-slate-300 duration-700 hover:text-black font-semibold`}>Select Class</button> */}
+                                    {
+                                        data?.totalSit - data?.numberOfStudents < 1 || isAdmin?.admin || isInstructor?.instructor ? <button disabled className={`${bgThim === "dark" ? "border-[1px] text-black" : ""} border-[1px] bg-slate-300 shadow-xl mb-5 me-5 py-1 px-3 rounded-2xl hover:bg-slate-400 duration-700 hover:text-black font-semibold`}>Not Available</button>
+                                            :
+                                            <button onClick={() => seleceClassHendler(data)} className={`${bgThim === "dark" ? "border-[1px]" : ""} border-[1px]  bg-transparent shadow-xl mb-5 me-5 py-1 px-3 rounded-2xl hover:bg-slate-300 duration-700 hover:text-black font-semibold`}>Select Class</button>
+                                    }
+                                </div>
+
+
+
                             </div>
-
-                            <div className="flex justify-end">
-                                {/* <button onClick={() => seleceClassHendler(data)} className={`${bgThim === "dark" ? "border-[1px]" : ""} border-[1px]  bg-transparent shadow-xl mb-5 me-5 py-1 px-3 rounded-2xl hover:bg-slate-300 duration-700 hover:text-black font-semibold`}>Select Class</button> */}
-                                {
-                                    data?.totalSit - data?.numberOfStudents < 1 || isAdmin?.admin || isInstructor?.instructor ? <button disabled className={`${bgThim === "dark" ? "border-[1px] text-black" : ""} border-[1px] bg-slate-300 shadow-xl mb-5 me-5 py-1 px-3 rounded-2xl hover:bg-slate-400 duration-700 hover:text-black font-semibold`}>Not Available</button>
-                                        :
-                                        <button onClick={() => seleceClassHendler(data)} className={`${bgThim === "dark" ? "border-[1px]" : ""} border-[1px]  bg-transparent shadow-xl mb-5 me-5 py-1 px-3 rounded-2xl hover:bg-slate-300 duration-700 hover:text-black font-semibold`}>Select Class</button>
-                                }
-                            </div>
-
-
-
-                        </div>)
+                            {/* </Reveal> */}
+                        </Fade>
+                    )
                 }
             </div>
             <div className=" flex justify-end w-10/12 mx-auto -mt-6 ">

@@ -19,6 +19,7 @@ import InstructorRoute from "./Privateroute/InstructorRoute";
 import Feedback from "./Dashboard/AdminFeedBack/Feedback";
 import DashWelcome from "./Dashboard/DashbordWelcomePage/DashWelcome";
 import EnroledClass from "./Dashboard/AllUser/EnroledClass";
+import NotFound from "./SharedFile/NotFoundFile/NotFound";
 
 
 export const router = createBrowserRouter([
@@ -94,5 +95,8 @@ export const router = createBrowserRouter([
                     </AdminRoute>
             },
         ]
+    },
+    {
+        path : "*", element : <NotFound></NotFound>
     }
 ])

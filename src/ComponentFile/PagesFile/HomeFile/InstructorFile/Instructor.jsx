@@ -4,6 +4,7 @@ import SingleInstructor from "../../../SharedFile/InstructorsSingleDataFile/Sing
 import { useContext } from "react";
 import { ThimProviders } from "../../../ThimProviderFile/ThimProvider";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import { Rotate } from "react-awesome-reveal";
 
 const Instructor = () => {
     const [instructorsDatas] = useInstructors()
@@ -11,11 +12,15 @@ const Instructor = () => {
 
     return (
         <div>
-             <h2 className="text-2xl text-center mt-16 font-bold uppercase mb-10">Top 6 Instructor</h2>
+            <h2 className="text-2xl text-center mt-16 font-bold uppercase mb-10">
+                <Rotate cascade>
+                    Top 6 Instructor
+                </Rotate>
+            </h2>
 
             <div className="grid md:grid-cols-3 justify-center w-10/12 gap-10 my-10 mx-auto">
                 {
-                    instructorsDatas.slice(0,6).map(data => <SingleInstructor
+                    instructorsDatas.slice(0, 6).map(data => <SingleInstructor
                         key={data._id}
                         data={data}
                     ></SingleInstructor>)

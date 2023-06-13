@@ -88,7 +88,7 @@ const Dashboard = () => {
                         <>
                             <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700" : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/"}> <AiTwotoneHome className=" block mt-0.5 me-1 text-xl"></AiTwotoneHome> Home</Link> </li>
                             <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700" : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/classes"}> <AiFillRead className=" block mt-0.5 me-1 text-xl"></AiFillRead>Classes</Link> </li>
-                            <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700" : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/instructors"}>  <SiInstructure className=" block mt-0.5 me-1 text-xl" ></SiInstructure> Instructor</Link> </li>
+                            <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700" : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/instructors"}>  <SiInstructure className=" block mt-0.5 me-1 text-xl" ></SiInstructure> Instructors</Link> </li>
                         </>
                     </ul>
 
