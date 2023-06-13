@@ -110,7 +110,7 @@ const ManageUser = () => {
                                             data?.role === "admin" ?
                                                 "Admin"
                                                 :
-                                                <button onClick={() => adminHandaler(data)} className="bg-gray-600 rounded-full p-2 btn-ghost text-white"><FaUserShield className="text-2xl text-green-300 "></FaUserShield></button>
+                                                <button onClick={() => adminHandaler(data)} className="bg-gray-600 rounded-full p-2 btn-ghost text-white"><FaUserShield className="text-2xl text-green-500 "></FaUserShield></button>
                                         }
                                     </th>
                                     <th>

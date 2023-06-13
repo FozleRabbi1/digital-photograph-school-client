@@ -6,6 +6,10 @@ import './Nav.css'
 import { AuthContext } from "../../AuthProviderFile/AuthProvider";
 import { useLocation } from "react-router-dom";
 import useSelectCourseData from "../../HooksFile/useSelectCourseData";
+import { AiFillRead, AiOutlineLogin, AiTwotoneHome } from "react-icons/ai";
+import { SiInstructure } from "react-icons/si";
+import { MdDashboardCustomize } from "react-icons/md";
+import { BiLogIn, BiLogOut } from "react-icons/bi";
 
 function Nav() {
     const [isOpen, setIsOpen] = useState(false);
@@ -51,24 +55,27 @@ function Nav() {
 
 
                                     <ActiveLink to={"/"} className="">
+                                            <AiTwotoneHome className=" block mt-0.5 me-1 text-xl"></AiTwotoneHome>
                                         Home
                                     </ActiveLink>
 
 
                                     <ActiveLink to={"/classes"} className="">
+                                        <AiFillRead className=" block mt-0.5 me-1 text-xl"></AiFillRead>
                                         Classes
                                     </ActiveLink>
 
 
                                     <ActiveLink to={"/instructors"} className="">
+                                        <SiInstructure className=" block mt-0.5 me-1 text-xl" ></SiInstructure>
                                         Instructors
                                     </ActiveLink>
 
                                     {
                                         user &&
                                         <ActiveLink to={"/dashboard/welcome"} className="relative">
+                                           <MdDashboardCustomize className=" block mt-0.5 me-1 text-xl"></MdDashboardCustomize>
                                             Dashboard
-                                            {/* <span className=" absolute top-1 "> {Selecteddatas.length}</span> */}
 
                                             <div className="badge badge-secondary bg-transparent ms-2">{Selecteddatas?.length || 0}</div>
                                         </ActiveLink>
@@ -79,13 +86,14 @@ function Nav() {
 
                                     <ActiveLink to={"/login"}>
                                         {
-                                            user ? <button onClick={LogOutFun}>LogOut</button> : " Login "
+                                            user ? <button onClick={LogOutFun} className="flex"> <BiLogOut className=" block mt-1 me-1 text-xl"></BiLogOut> LogOut</button> : <span className="flex"> <BiLogIn className=" block mt-1 me-1 text-xl"></BiLogIn> Login </span>
                                         }
 
                                     </ActiveLink>
 
 
                                     <ActiveLink to={"/register"}>
+                                        <AiOutlineLogin className=" block mt-0.5 me-1 text-xl"></AiOutlineLogin>
                                         Register
                                     </ActiveLink>
 

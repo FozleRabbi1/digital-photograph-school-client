@@ -74,7 +74,6 @@ const CheckOut = ({ data, price }) => {
         }
 
         const currentDate = new Date()
-
         setProcessing(false)
         if (paymentIntent.status === "succeeded") {
             const transactionId = paymentIntent.id;

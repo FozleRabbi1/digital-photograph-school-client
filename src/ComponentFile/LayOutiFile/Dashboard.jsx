@@ -6,6 +6,12 @@ import useAdmin from "../HooksFile/useAdmin";
 import useInstructor from "../HooksFile/useInstructor";
 import { AuthContext } from "../AuthProviderFile/AuthProvider";
 import Footer from "../SharedFile/Footer/Footer";
+import { FaRenren, FaUserShield, FaUsers } from "react-icons/fa";
+import { ImUsers } from "react-icons/im";
+import { AiFillRead, AiTwotoneHome } from "react-icons/ai";
+import { SiInstructure } from "react-icons/si";
+import { MdClass, MdPlaylistAddCircle } from "react-icons/md";
+import { BiSelectMultiple } from "react-icons/bi";
 
 const Dashboard = () => {
     const { bgThim } = useContext(ThimProviders)
@@ -23,7 +29,7 @@ const Dashboard = () => {
                 <div className="drawer-content flex flex-col ">
 
                     <Outlet></Outlet>
-                    
+
 
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
@@ -38,38 +44,51 @@ const Dashboard = () => {
                             isAdmin?.admin ?
                                 <>
                                     <li className={`${bgThim === "dark" ? "bg-indigo-300 text-white" : "bg-indigo-300"} mb-3 rounded-2xl font-semibold text-xl text-center p-2`}>
-                                        Admin  <span className="text-xs text-center block m-0 p-0 ">{user.email}</span>
+
+                                        <div className="flex justify-center"> <FaUserShield className="text-2xl text-green-900"></FaUserShield> Admin</div>
+
+                                        <span className="text-xs text-center block m-0 p-0 "> {user.email}</span>
                                     </li>
-                                    <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700" : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/dashboard/manageUser"}>Manage User</Link> </li>
-                                    <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700" : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/dashboard/managClass"}>Manage Classes</Link> </li>
+                                    <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700" : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/dashboard/manageUser"}> <FaUsers className="text-2xl "></FaUsers> Manage User</Link> </li>
+                                    <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700" : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/dashboard/managClass"}> <AiFillRead className=" block mt-0.5 me-1 text-xl"></AiFillRead> Manage Classes</Link> </li>
                                 </>
 
                                 : isInstructor?.instructor ?
 
                                     <>
                                         <li className={`${bgThim === "dark" ? "bg-indigo-300 text-white" : "bg-indigo-300"} mb-3 rounded-2xl text-xl text-center p-2`}>
-                                            Instructor  <span className="text-xs text-center block m-0 p-0 ">{user.email}</span>
+
+                                            <div className="flex justify-center">
+                                                <ImUsers className="text-2xl text-indigo-900 "></ImUsers>
+                                                Instructor
+                                            </div>
+
+                                            <span className="text-xs text-center block m-0 p-0 ">{user.email}</span>
                                         </li>
-                                        <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700" : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/dashboard/addedClass"}>Add a Class</Link> </li>
-                                        <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700" : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/dashboard/myClasses"}>My Classes</Link> </li>
+                                        <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700" : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/dashboard/addedClass"}> <MdPlaylistAddCircle className="text-2xl text-indigo-900 "></MdPlaylistAddCircle> Add a Class</Link> </li>
+                                        <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700" : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/dashboard/myClasses"}> <MdClass className="text-2xl text-indigo-900 "></MdClass> My Classes</Link> </li>
                                     </>
 
                                     :
                                     <>
-                                        <li className={`${bgThim === "dark" ? "bg-indigo-300 text-white" : "bg-indigo-300"} mb-3 rounded-2xl text-xl text-center p-2`}> User
+                                        <li className={`${bgThim === "dark" ? "bg-indigo-300 text-white" : "bg-indigo-300"} mb-3 rounded-2xl text-xl text-center p-2`}>
+                                            <div className="flex justify-center">
+                                                <FaUsers className="text-2xl text-indigo-900 "></FaUsers>
+                                                User
+                                            </div>
                                             <span className="text-xs text-center block m-0 p-0 ">{user.email}</span>
                                         </li>
-                                        <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700 " : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/dashboard/selectedClass"}>Selected Classes</Link> </li>
-                                        <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700 " : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/dashboard/enroledClass"}>Enrolled Classes</Link> </li>
+                                        <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700 " : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/dashboard/selectedClass"}> <BiSelectMultiple className="text-2xl text-indigo-900 "></BiSelectMultiple> Selected Classes</Link> </li>
+                                        <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700 " : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/dashboard/enroledClass"}> <FaRenren className="text-2xl text-indigo-900 "></FaRenren> Enrolled Classes</Link> </li>
                                     </>
 
                         }
 
                         <div className="divider"></div>
                         <>
-                            <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700" : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/"}>Home</Link> </li>
-                            <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700" : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/classes"}>Classes</Link> </li>
-                            <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700" : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/instructors"}>Instructor</Link> </li>
+                            <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700" : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/"}> <AiTwotoneHome className=" block mt-0.5 me-1 text-xl"></AiTwotoneHome> Home</Link> </li>
+                            <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700" : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/classes"}> <AiFillRead className=" block mt-0.5 me-1 text-xl"></AiFillRead>Classes</Link> </li>
+                            <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700" : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/instructors"}>  <SiInstructure className=" block mt-0.5 me-1 text-xl" ></SiInstructure> Instructor</Link> </li>
                         </>
                     </ul>
 

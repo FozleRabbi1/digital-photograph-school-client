@@ -14,4 +14,4 @@ const useEnroledClass = () => {
     })
     return [enroledDatas, loading, refetch]
 }
-export default useEnroledClass;
+export default useEnroledClass; 
