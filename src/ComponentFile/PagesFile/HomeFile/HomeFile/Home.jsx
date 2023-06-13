@@ -5,6 +5,7 @@ import Lottie from "lottie-react";
 import Loading from "../../../AllAnimation/LofingDote.json"
 import PopulerClass from "../PopulerClassFile/PopulerClass";
 import Instructor from "../InstructorFile/Instructor";
+import Contact from "../ContactUsFile/Contact";
 // import useSelectCourseData from "../../../HooksFile/useSelectCourseData";
 
 const Home = () => {
@@ -32,6 +33,8 @@ const Home = () => {
                         <PopulerClass></PopulerClass>
 
                         <Instructor></Instructor>
+
+                        <Contact></Contact>
 
 
 
