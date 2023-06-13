@@ -18,9 +18,10 @@ const Classess = () => {
     const [isInstructor] = useInstructor();
 
     const seleceClassHendler = (data) => {
+        
 
         const { _id, email, ...rest } = data;
-        const datas = { email: user?.email, ...rest };
+        const datas = { selectedClassId: _id, email: user?.email, ...rest };
         console.log(datas)
 
         if (user && user.email) {

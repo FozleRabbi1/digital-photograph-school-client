@@ -23,7 +23,7 @@ const PopulerClass = () => {
         console.log(data)
 
         const { _id, email, ...rest } = data;
-        const datas = { email: user?.email, ...rest };
+        const datas = { selectedClassId: _id, email: user?.email, ...rest };
 
         if (user && user.email) {
 

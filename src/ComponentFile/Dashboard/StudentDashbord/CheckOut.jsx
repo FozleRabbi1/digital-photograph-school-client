@@ -16,6 +16,7 @@ const CheckOut = ({ data, price }) => {
     const { user } = useContext(AuthContext);
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState("");
+    console.log(data)
 
     useEffect(() => {
         if (price > 0) {
@@ -99,14 +100,20 @@ const CheckOut = ({ data, price }) => {
             axiosSecure.post("/payment", paymentInfo)
                 .then(res => {
                     console.log(res.data)
-                    if (res.data.insertedId) {
-                        Swal.fire({
-                            position: '',
-                            icon: 'success',
-                            title: 'Enroll successFull',
-                            showConfirmButton: false,
-                            timer: 1500
+                    if (res.data.insertResult.acknowledged && res.data.deleteResult.acknowledged) {
+                        fetch(`http://localhost:5000/courses/${data?.selectedClassId}`, {
+                            method: "PATCH"
                         })
+                            .then(() => {
+                                Swal.fire({
+                                    position: '',
+                                    icon: 'success',
+                                    title: 'Enroll successFull',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            })
+
                     }
                 })
         }
