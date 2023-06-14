@@ -6,7 +6,7 @@ import useAdmin from "../HooksFile/useAdmin";
 import useInstructor from "../HooksFile/useInstructor";
 import { AuthContext } from "../AuthProviderFile/AuthProvider";
 import Footer from "../SharedFile/Footer/Footer";
-import { FaRenren, FaUserShield, FaUsers } from "react-icons/fa";
+import { FaFileInvoiceDollar, FaRenren, FaUserShield, FaUsers } from "react-icons/fa";
 import { ImUsers } from "react-icons/im";
 import { AiFillRead, AiTwotoneHome } from "react-icons/ai";
 import { SiInstructure } from "react-icons/si";
@@ -80,6 +80,7 @@ const Dashboard = () => {
                                         </li>
                                         <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700 " : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/dashboard/selectedClass"}> <BiSelectMultiple className="text-2xl text-indigo-900 "></BiSelectMultiple> Selected Classes</Link> </li>
                                         <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700 " : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/dashboard/enroledClass"}> <FaRenren className="text-2xl text-indigo-900 "></FaRenren> Enrolled Classes</Link> </li>
+                                        <li className={`${bgThim === "dark" ? "bg-gray-800 text-white hover:bg-gray-100 duration-700 " : "bg-indigo-300"} mb-3 rounded-2xl`}> <Link to={"/dashboard/paymentHistory"}> <FaFileInvoiceDollar className="text-2xl text-indigo-900 "></FaFileInvoiceDollar> Payment History</Link> </li>
                                     </>
 
                         }

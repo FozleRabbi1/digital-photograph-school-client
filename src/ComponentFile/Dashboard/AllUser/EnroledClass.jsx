@@ -7,7 +7,6 @@ import Swal from "sweetalert2";
 const EnroledClass = () => {
     const [enroledDatas, ,refetch] = useEnroledClass();
     const { bgThim } = useContext(ThimProviders)
-    console.log(enroledDatas)
 
     const deleteCourseHandler = (id) => {
         console.log(id)

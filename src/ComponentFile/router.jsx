@@ -20,6 +20,7 @@ import Feedback from "./Dashboard/AdminFeedBack/Feedback";
 import DashWelcome from "./Dashboard/DashbordWelcomePage/DashWelcome";
 import EnroledClass from "./Dashboard/AllUser/EnroledClass";
 import NotFound from "./SharedFile/NotFoundFile/NotFound";
+import PaymentHistory from "./Dashboard/StudentDashbord/SelectedClass/PaymentHistory/PaymentHistory";
 
 
 export const router = createBrowserRouter([
@@ -56,6 +57,12 @@ export const router = createBrowserRouter([
                 path: "enroledClass", element:
                     <PrivateRoute>
                        <EnroledClass></EnroledClass>
+                    </PrivateRoute>
+            },
+            {
+                path: "paymentHistory", element:
+                    <PrivateRoute>
+                      <PaymentHistory></PaymentHistory>
                     </PrivateRoute>
             },
             {

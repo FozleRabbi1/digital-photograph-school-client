@@ -8,6 +8,8 @@ import useAxiosSecure from "../../HooksFile/useAxiosSecure";
 const ManageUser = () => {
     const [users, refetch] = useAllUsers();
     const [axiosSecure] = useAxiosSecure();
+    // console.log("=========",users)
+
     useEffect(() => {
         refetch()
     }, [users.email, refetch])
