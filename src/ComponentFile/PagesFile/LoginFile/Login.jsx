@@ -1,10 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { faEnvelope, faEye, faEyeSlash, faUnlockKeyhole } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../AuthProviderFile/AuthProvider";
 import SocialLogin from "../../SharedFile/NavBarFile/SocialLogin/SocialLogin";
+import Swal from "sweetalert2";
 
 const Login = () => {
     const { signInUser } = useContext(AuthContext)
@@ -13,7 +14,16 @@ const Login = () => {
     const navigate = useNavigate()
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
-    const [error, setError] = useState(" ")
+    const [error, setError] = useState(" ");
+
+    useEffect(()=>{
+        Swal.fire({
+            position: '',
+            title: 'Login First',
+            showConfirmButton: false,
+            timer: 1000
+        })
+    },[])
 
 
     const onSubmit = data => {

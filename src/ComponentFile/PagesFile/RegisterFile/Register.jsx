@@ -15,7 +15,7 @@ const Register = () => {
     const [showPass, setShowPass] = useState(false);
     const { register, handleSubmit, watch, formState: { errors, touchedFields } } = useForm();
     const password = watch('password');
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, updateUserProfile, loginOut } = useContext(AuthContext);
     const navigate = useNavigate()
 
     const onSubmit = data => {
@@ -39,7 +39,8 @@ const Register = () => {
                     .then(data => {
                       // console.log("data 2 ========", data)
                         if (data) {
-                            navigate("/")
+                            loginOut()
+                            navigate("/login")
                             Swal.fire({
                                 position: '',
                                 icon: 'success',
