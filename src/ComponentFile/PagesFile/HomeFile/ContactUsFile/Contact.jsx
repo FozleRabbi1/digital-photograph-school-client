@@ -8,7 +8,7 @@ const Contact = () => {
     return (
         <div className="">
             <h2 className="text-center text-2xl font-semibold mt-10 -mb-5 ">Contact Us</h2>
-            <div className={`${bgThim === "dark" ? "bg-transparent border" : "bg-red-100 border "} rounded grid grid-cols-2 py-10  w-10/12 mx-auto my-16`}>
+            <div className={`${bgThim === "dark" ? "bg-transparent border" : "bg-red-100 border "} rounded grid justify-center md:grid-cols-2 py-10  w-10/12 mx-auto my-16`}>
                 <div className="contactAnim">
                     <Lottie animationData={ContactAnim} ></Lottie>
                 </div>

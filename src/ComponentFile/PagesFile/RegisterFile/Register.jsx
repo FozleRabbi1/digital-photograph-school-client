@@ -29,7 +29,7 @@ const Register = () => {
               // console.log(" create user ====>>  ", data)
                 navigate("/")
 
-                fetch("http://localhost:5000/users", {
+                fetch("https://digital-photograph-school-server.vercel.app/users", {
                     method: "POST",
                     headers: {
                         'Content-type': 'application/json'

@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProviderFile/AuthProvider';
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://digital-photograph-school-server.vercel.app',
+    // baseURL: 'http://localhost:5000',
 });
 
 const useAxiosSecure = () => {

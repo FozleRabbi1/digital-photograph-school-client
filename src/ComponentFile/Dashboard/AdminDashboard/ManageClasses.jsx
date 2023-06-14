@@ -4,17 +4,19 @@ import Swal from "sweetalert2";
 
 
 const ManageClasses = () => {
+    
     const { data: datas = [], isLoading: loading, refetch } = useQuery({
         queryKey: ["AdminRouterCourses"],
         queryFn: async () => {
-            const res = await fetch("http://localhost:5000/AdminRouterCourses");
+            const res = await fetch("https://digital-photograph-school-server.vercel.app/AdminRouterCourses");
             return res.json();      // =============>>>  useAxiosSecure use korle res.json() use kora lagto na  use axios er moddhei convart hoye jeto
         }
     })
+
     console.log(datas)
 
     const decisionAproveHendler = (id) => {
-        fetch(`http://localhost:5000/adminAproveCourses/${id}`, {
+        fetch(`https://digital-photograph-school-server.vercel.app/adminAproveCourses/${id}`, {
             method: "PATCH"
         })
             .then(() => {
@@ -30,7 +32,7 @@ const ManageClasses = () => {
     }
 
     const decisionDeniedHendler = (id) => {
-        fetch(`http://localhost:5000/adminDeniedCourses/${id}`, {
+        fetch(`https://digital-photograph-school-server.vercel.app/adminDeniedCourses/${id}`, {
             method: "PATCH"
         })
             .then(() => {
@@ -46,7 +48,7 @@ const ManageClasses = () => {
     }
 
 
-    // http://localhost:5000/adminAproveCourses
+    // https://digital-photograph-school-server.vercel.app/adminAproveCourses
 
     return (
         <div>
@@ -63,6 +65,7 @@ const ManageClasses = () => {
                             <div className=" w-4/12  ">
                                 <h2>Email : {data.email}</h2>
                                 <h2>Duration : {data.courseLength}</h2>
+                                <h2>Price : {data.price} $ </h2>
                             </div>
                             <div>
                                 <p>Seat : {data.totalSit}</p>

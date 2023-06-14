@@ -100,7 +100,7 @@ const CheckOut = ({ data, price }) => {
                 .then(res => {
                     console.log(res.data)
                     if (res.data.insertResult.acknowledged && res.data.deleteResult.acknowledged) {
-                        fetch(`http://localhost:5000/courses/${data?.selectedClassId}`, {
+                        fetch(`https://digital-photograph-school-server.vercel.app/courses/${data?.selectedClassId}`, {
                             method: "PATCH"
                         })
                             .then(() => {

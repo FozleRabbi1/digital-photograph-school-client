@@ -8,7 +8,7 @@ const useEnroledClass = () => {
     const { data: enroledDatas = [], isLoading: loading, refetch } = useQuery({
         queryKey: ["enroledClass"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/enroledCLass?email=${user?.email}`);
+            const res = await fetch(`https://digital-photograph-school-server.vercel.app/enroledCLass?email=${user?.email}`);
             return res.json();      // =============>>>  useAxiosSecure use korle res.json() use kora lagto na  use axios er moddhei convart hoye jeto
         }
     })

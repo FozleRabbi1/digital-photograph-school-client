@@ -12,7 +12,7 @@ const Feedback = () => {
     const { data, refetch } = useQuery({
         queryKey: ["feedback"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/admin/feedback/${id}`);
+            const res = await fetch(`https://digital-photograph-school-server.vercel.app/admin/feedback/${id}`);
             const data = await res.json(); // Extract the JSON data from the response
             return data;
         },
@@ -22,7 +22,7 @@ const Feedback = () => {
         e.preventDefault();
         const feedBack = e.target.feedBack.value;
 
-        axios.patch(`http://localhost:5000/admin/feedback/${id}`, { feedBack: feedBack })
+        axios.patch(`https://digital-photograph-school-server.vercel.app/admin/feedback/${id}`, { feedBack: feedBack })
             .then(res => {
                 console.log(res.data)
                 if(res.data.acknowledged){
@@ -61,7 +61,7 @@ const Feedback = () => {
 
             <form onSubmit={adminFeedBackHandeler}>
 
-                <textarea placeholder="Admin FeedBack" className="bg-gray-300 mb-5 p-4 w-11/12 mx-auto rounded-lg block" name="feedBack" id="" cols="30" rows="5">
+                <textarea placeholder="Write Your FeedBack here " className="bg-gray-300 mb-5 p-4 w-11/12 mx-auto rounded-lg block" name="feedBack" id="" cols="30" rows="5">
                 </textarea>
                 <div className="w-11/12 mx-auto flex justify-center">
                     <button type="submit" className="btn btn-outline btn-success px-24">Send</button>

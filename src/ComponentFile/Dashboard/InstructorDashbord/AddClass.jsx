@@ -30,6 +30,7 @@ const AddClass = () => {
                 if (imageData.success) {
                     const imageUrl = imageData.data.display_url;
                     const { title, price, classTime, courseLength, description, totalSit, numberOfStudents } = data;
+                    
                     const newClass = { email: user?.email, pending: "pending", title, price: parseFloat(price), classTime, courseLength, instructorName : user?.displayName, description, totalSit: parseFloat(totalSit), image: imageUrl, numberOfStudents: parseFloat(numberOfStudents) }
 
 

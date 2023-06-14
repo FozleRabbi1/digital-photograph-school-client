@@ -28,7 +28,7 @@ const PopulerClass = () => {
 
         if (user && user.email) {
 
-            fetch("http://localhost:5000/course", {
+            fetch("https://digital-photograph-school-server.vercel.app/course", {
                 method: "POST",
                 headers: {
                     'Content-type': 'application/json'

@@ -13,7 +13,7 @@ const ManageUser = () => {
     }, [users.email, refetch])
 
     const adminHandaler = (user) => {
-        // fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        // fetch(`https://digital-photograph-school-server.vercel.app/users/admin/${user._id}`, {
         //     method: "PATCH"
         // })
         axiosSecure.patch(`/users/admin/${user._id}`)
@@ -33,7 +33,7 @@ const ManageUser = () => {
             })
     }
     const instructorHandaler = (user) => {
-        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+        fetch(`https://digital-photograph-school-server.vercel.app/users/instructor/${user._id}`, {
             method: "PATCH"
         })
             .then(res => res.json())
@@ -52,7 +52,7 @@ const ManageUser = () => {
             })
     }
     const userHandaler = (user) => {
-        fetch(`http://localhost:5000/users/user/${user._id}`, {
+        fetch(`https://digital-photograph-school-server.vercel.app/users/user/${user._id}`, {
             method: "PATCH"
         })
             .then(res => res.json())

@@ -26,7 +26,7 @@ const SelectedClass = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/course/${id}`, {
+                fetch(`https://digital-photograph-school-server.vercel.app/course/${id}`, {
                     method: "DELETE"
                 })
                     .then(() => {

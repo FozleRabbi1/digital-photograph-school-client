@@ -12,7 +12,7 @@ const useSelectCourseData = () => {
         queryKey: ['course', user?.email],
         enabled: !!user?.email && !!localStorage.getItem("access-token"),   // TODO
         queryFn: async () => {
-            const response = await axiosSecure(`http://localhost:5000/course?email=${user?.email}`)
+            const response = await axiosSecure(`https://digital-photograph-school-server.vercel.app/course?email=${user?.email}`)
             return response.data;
         },
     })

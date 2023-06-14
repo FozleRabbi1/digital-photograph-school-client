@@ -26,7 +26,7 @@ const Classess = () => {
 
         if (user && user.email) {
 
-            fetch("http://localhost:5000/course", {
+            fetch("https://digital-photograph-school-server.vercel.app/course", {
                 method: "POST",
                 headers: {
                     'Content-type': 'application/json'
@@ -92,7 +92,7 @@ const Classess = () => {
 
                             <div className="flex justify-end">
                                 {
-                                    data.totalSit - data.numberOfStudents < 1 || isAdmin?.admin || isInstructor.instructor ?
+                                    data.totalSit - data.numberOfStudents < 1 || isAdmin?.admin || isInstructor?.instructor ?
 
                                         <button disabled className={`${bgThim === "dark" ? "border-[1px] text-black" : ""} border-[1px] bg-slate-300 shadow-xl mb-5 me-5 py-1 px-3 rounded-2xl hover:bg-slate-400 duration-700 hover:text-black font-semibold`}>Not Available</button>
 
