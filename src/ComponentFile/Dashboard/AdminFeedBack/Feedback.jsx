@@ -21,7 +21,7 @@ const Feedback = () => {
     const adminFeedBackHandeler = (e) => {
         e.preventDefault();
         const feedBack = e.target.feedBack.value;
-
+        
         axios.patch(`https://digital-photograph-school-server.vercel.app/admin/feedback/${id}`, { feedBack: feedBack })
             .then(res => {
                 console.log(res.data)
@@ -37,9 +37,9 @@ const Feedback = () => {
             })
 
         e.target.reset()
-
-
     }
+
+
 
     return (
         <div className="w-full">

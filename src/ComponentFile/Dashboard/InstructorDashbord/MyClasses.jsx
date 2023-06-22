@@ -125,24 +125,13 @@ const MyClasses = () => {
                                             </td>
                                             <td className="m-0 p-2">{data.title}</td>
                                             <td className="m-0 p-2">{data.feedBack}</td>
-
-
                                         </tr> : ""
-
-
-
                                 )
-
                             }
-
                         </tbody>
                     </table>
-
                 </div>
-
-
             </div>
-
         </div>
     );
 };

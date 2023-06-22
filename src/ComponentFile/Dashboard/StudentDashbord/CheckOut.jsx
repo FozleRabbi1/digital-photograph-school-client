@@ -20,7 +20,7 @@ const CheckOut = ({ data, price }) => {
 
     useEffect(() => {
         if (price > 0) {
-            axiosSecure.post("/create-payment-intent", { price })
+            axiosSecure.post("/https://meet.google.com/pep-vtkv-mec", { price })
                 .then(res => {
                     console.log(res.data.clientSecret);
                     setClientSecret(res.data.clientSecret)
@@ -112,13 +112,11 @@ const CheckOut = ({ data, price }) => {
                                     timer: 1500
                                 })
                             })
-
                     }
                 })
         }
-
-
     }
+
 
     return (
         <div className="w-[700px] mt-10 main-form-div">

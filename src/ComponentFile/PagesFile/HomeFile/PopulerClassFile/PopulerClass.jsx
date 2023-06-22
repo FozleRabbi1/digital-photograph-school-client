@@ -78,7 +78,7 @@ const PopulerClass = () => {
 
             </h2>
 
-            <div className="grid md:grid-cols-3 gap-10 w-10/12 mx-auto my-16 ">
+            <div className="grid md:grid-cols-3 gap-6 w-9/12 mx-auto my-16 ">
                 {
                     datas?.slice(0, 6).map(data =>
                         // <Reveal key={data._id} effect="fadeInUp">
@@ -117,7 +117,7 @@ const PopulerClass = () => {
                     )
                 }
             </div>
-            <div className=" flex justify-end w-10/12 mx-auto -mt-6 ">
+            <div className=" flex justify-end w-9/12 mx-auto -mt-6 ">
                 <Link to={"/classes"} className={`flex items-center ${bgThim === "dark" ? "bg-indigo-400 text-red-500 " : ""} bg-gray-400 py-2 px-4 rounded-full font-bold italic`}>Show more <AiOutlineArrowRight className="ms-1 text-xl"></AiOutlineArrowRight> </Link>
             </div>
 

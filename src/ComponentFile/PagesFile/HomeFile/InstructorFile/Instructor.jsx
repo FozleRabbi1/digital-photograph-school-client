@@ -18,7 +18,7 @@ const Instructor = () => {
                 </Rotate>
             </h2>
 
-            <div className="grid md:grid-cols-3 justify-center w-10/12 gap-10 my-10 mx-auto">
+            <div className="grid md:grid-cols-3 justify-center w-9/12 gap-6 my-10 mx-auto">
                 {
                     instructorsDatas.slice(0, 6).map(data => <SingleInstructor
                         key={data._id}
@@ -27,7 +27,7 @@ const Instructor = () => {
                 }
             </div>
 
-            <div className=" flex justify-end w-10/12 mx-auto ">
+            <div className=" flex justify-end w-9/12 mx-auto ">
                 <Link to={"/instructors"} className={`flex items-center ${bgThim === "dark" ? "bg-indigo-400 text-red-500 " : ""} bg-gray-400 py-2 px-4 rounded-full font-bold italic`}>Show more <AiOutlineArrowRight className="ms-1 text-xl"></AiOutlineArrowRight> </Link>
             </div>
 
